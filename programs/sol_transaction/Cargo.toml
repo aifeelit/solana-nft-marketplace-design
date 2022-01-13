@@ -1,0 +1,23 @@
+[package]
+name = "sol_transaction"
+version = "0.1.0"
+description = "Created with Anchor"
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "sol_transaction"
+
+[features]
+no-entrypoint = []
+no-idl = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.18.2"
+anchor-spl = {version = "0.18.2"}
+solana-program = "=1.8.0"
+borsh = "0.9.1"
+borsh-derive = "0.9.1"
+thiserror = "1.0.24"
