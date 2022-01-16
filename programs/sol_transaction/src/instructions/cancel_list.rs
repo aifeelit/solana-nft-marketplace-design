@@ -20,7 +20,7 @@ pub struct CancelList<'info> {
         constraint = nft_token_account.mint == *nft_mint_account.key,
         constraint = nft_token_account.owner == seller.key()
     )]
-    pub nft_token_account: Account<'info, TokenAccount>,
+    pub nft_token_account: Box<Account<'info, TokenAccount>>,
 
     #[account(
         owner = token::Token::id()
@@ -31,7 +31,7 @@ pub struct CancelList<'info> {
         mut,
         constraint = vault_token_account.mint == *nft_mint_account.key
     )]
-    pub vault_token_account: Account<'info, TokenAccount>,
+    pub vault_token_account: Box<Account<'info, TokenAccount>>,
 
     #[account(
         seeds = [b"vault_authority".as_ref()],

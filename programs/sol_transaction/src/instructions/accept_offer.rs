@@ -29,7 +29,7 @@ pub struct AcceptOffer<'info> {
         constraint = offer_nft_token_account.mint == *nft_mint_account.key,
         constraint = offer_nft_token_account.owner == seller.key()
     )]
-    pub offer_nft_token_account: Account<'info, TokenAccount>,
+    pub offer_nft_token_account: Box<Account<'info, TokenAccount>>,
 
     #[account(
         owner = token::Token::id()
@@ -40,7 +40,7 @@ pub struct AcceptOffer<'info> {
         mut,
         constraint = vault_token_account.mint == *nft_mint_account.key
     )]
-    pub vault_token_account: Account<'info, TokenAccount>,
+    pub vault_token_account: Box<Account<'info, TokenAccount>>,
 
     #[account(
         seeds = [b"vault_authority".as_ref()],

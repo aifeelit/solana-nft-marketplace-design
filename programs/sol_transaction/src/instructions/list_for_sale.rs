@@ -20,7 +20,7 @@ pub struct ListForSale<'info> {
         constraint = nft_token_account.mint == nft_mint_account.key(),
         constraint = nft_token_account.owner == seller.key()
     )]
-    pub nft_token_account: Account<'info, TokenAccount>,
+    pub nft_token_account: Box<Account<'info, TokenAccount>>,
 
     #[account(
         owner = token::Token::id()
@@ -33,7 +33,7 @@ pub struct ListForSale<'info> {
         associated_token::mint = nft_mint_account,
         associated_token::authority = vault_authority
     )]
-    pub vault_token_account: Account<'info, TokenAccount>,
+    pub vault_token_account: Box<Account<'info, TokenAccount>>,
 
     #[account(
         seeds = [b"vault_authority".as_ref()],

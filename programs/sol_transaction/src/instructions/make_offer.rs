@@ -22,7 +22,7 @@ pub struct MakeOffer<'info> {
         constraint = offer_nft_token_account.mint == *nft_mint_account.key,
         constraint = offer_nft_token_account.owner == offerer.key()
     )]
-    pub offer_nft_token_account: Account<'info, TokenAccount>,
+    pub offer_nft_token_account: Box<Account<'info, TokenAccount>>,
 
     #[account(
         owner = token::Token::id()
